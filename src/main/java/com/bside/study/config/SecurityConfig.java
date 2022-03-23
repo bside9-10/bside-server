@@ -94,12 +94,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .httpBasic()
                 .disable()
+                .headers()
+                .frameOptions()
+                .disable()
+                .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(new RestAuthenticationEntryPoint())
                 .and()
                 .authorizeRequests()
                 .antMatchers("/",
                         "/error",
+                        "/h2-console/**",
                         "/favicon.ico",
                         "/**/*.png",
                         "/**/*.gif",
@@ -116,11 +121,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .oauth2Login()
                 .authorizationEndpoint()
-                .baseUri("/oauth2/authorize")
+                .baseUri("/oauth2/authorize/*")
                 .authorizationRequestRepository(cookieAuthorizationRequestRepository())
                 .and()
                 .redirectionEndpoint()
-                .baseUri("/oauth2/callback/*")
+                .baseUri("/oauth2/callback/google")
                 .and()
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService)
