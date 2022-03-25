@@ -1,19 +1,20 @@
 package com.bside.study.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Getter
-@Setter
 @Entity
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")
 })
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -30,7 +31,7 @@ public class User {
     private String imageUrl;
 
     @Column(nullable = false)
-    private Boolean emailVerified = false;
+    private Boolean emailVerified;
 
     @JsonIgnore
     private String password;
@@ -41,4 +42,12 @@ public class User {
 
     private String providerId;
 
+    public void encodePassword(String encodePassword) {
+        this.password = encodePassword;
+    }
+
+    public void updateNameAndImageUrl(String name, String imageUrl) {
+        this.name = name;
+        this.imageUrl = imageUrl;
+    }
 }

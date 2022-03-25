@@ -1,5 +1,7 @@
 package com.bside.study.user.payload;
 
+import com.bside.study.user.entity.AuthProvider;
+import com.bside.study.user.entity.User;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
@@ -16,4 +18,13 @@ public class SignUpRequest {
 
     @NotBlank
     private String password;
+
+    public User toEntity() {
+        return User.builder()
+                .name(name)
+                .email(email)
+                .password(password)
+                .provider(AuthProvider.local)
+                .build();
+    }
 }
