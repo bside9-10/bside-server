@@ -4,6 +4,9 @@ endif::[]
 
 :toc: left
 :toclevels: 4
+:source-highlighter: highlightjs
+:icons: font
+:doctype: book
 
 = API-Docs
 
@@ -11,22 +14,93 @@ endif::[]
 
 === 사용자 회원가입
 
+소셜 회원가입이 아닌 일반 회원가입 api, 사용자 권한을 포함하여 api 호출
+
+role (사용자 권한)::
+* ADMIN : 관리자
+* USER : 일반 사용자
+* GUEST : 외부 사용자
+
 .curl
 
-include::{snippets}/signup/curl-request.adoc[]
+include::{snippets}/user-signup/curl-request.adoc[]
 
 .http-request
 
-include::{snippets}/signup/http-request.adoc[]
+include::{snippets}/user-signup/http-request.adoc[]
 
 .http-response
 
-include::{snippets}/signup/http-response.adoc[]
+include::{snippets}/user-signup/http-response.adoc[]
 
 .request-fields
 
-include::{snippets}/signup/request-fields.adoc[]
+include::{snippets}/user-signup/request-fields.adoc[]
+
+.response-fields
+
+include::{snippets}/user-signup/response-fields.adoc[]
+
+=== 사용자 로그인
+
+.curl
+
+include::{snippets}/user-login/curl-request.adoc[]
+
+.http-request
+
+include::{snippets}/user-login/http-request.adoc[]
+
+.http-response
+
+include::{snippets}/user-login/http-response.adoc[]
 
 .request-fields
 
-include::{snippets}/signup/response-fields.adoc[]
+include::{snippets}/user-login/request-fields.adoc[]
+
+.response-fields
+
+include::{snippets}/user-login/response-fields.adoc[]
+
+=== 사용자 내정보 조회
+
+.curl
+
+include::{snippets}/user-me/curl-request.adoc[]
+
+.http-request
+
+include::{snippets}/user-me/http-request.adoc[]
+
+.http-response
+
+include::{snippets}/user-me/http-response.adoc[]
+
+.request-fields
+
+include::{snippets}/user-me/request-fields.adoc[]
+
+.response-fields
+
+include::{snippets}/user-me/response-fields.adoc[]
+
+== Goal API
+
+=== 목적 카테고리 조회
+
+.curl
+
+include::{snippets}/goal-list/curl-request.adoc[]
+
+.http-request
+
+include::{snippets}/goal-list/http-request.adoc[]
+
+.http-response
+
+include::{snippets}/goal-list/http-response.adoc[]
+
+.response-fields
+
+include::{snippets}/goal-list/response-fields.adoc[]

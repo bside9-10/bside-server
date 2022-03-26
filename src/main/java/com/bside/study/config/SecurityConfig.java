@@ -7,9 +7,11 @@ import com.bside.study.security.oauth2.CustomOAuth2UserService;
 import com.bside.study.security.oauth2.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.bside.study.security.oauth2.OAuth2AuthenticationFailureHandler;
 import com.bside.study.security.oauth2.OAuth2AuthenticationSuccessHandler;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -22,6 +24,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.servlet.Filter;
+
+import static com.bside.study.user.entity.Role.USER;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
@@ -29,7 +35,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
         jsr250Enabled = true,
         prePostEnabled = true
 )
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final Environment env;
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
@@ -102,7 +111,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(new RestAuthenticationEntryPoint())
                 .and()
                 .authorizeRequests()
-                .antMatchers("/**",
+                .antMatchers("/",
                         "/error",
                         "/h2-console/**",
                         "/favicon.ico",
@@ -114,10 +123,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                 .permitAll()
-                .antMatchers("/auth/**", "/oauth2/**")
+                .antMatchers("/api/v1/signup", "/api/v1/login")
                 .permitAll()
-                .anyRequest()
-                .authenticated()
+                .antMatchers("/api/v1/users/**", "/api/v1/goals/**")
+                .hasAnyAuthority(USER.getRole())
                 .and()
                 .oauth2Login()
                 .authorizationEndpoint()
@@ -125,7 +134,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizationRequestRepository(cookieAuthorizationRequestRepository())
                 .and()
                 .redirectionEndpoint()
-                .baseUri("/oauth2/callback/google")
+                .baseUri("/oauth2/callback/*")
                 .and()
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService)
@@ -136,4 +145,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Add our custom Token based authentication filter
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
+
 }

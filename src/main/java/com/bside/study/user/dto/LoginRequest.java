@@ -1,4 +1,4 @@
-package com.bside.study.user.payload;
+package com.bside.study.user.dto;
 
 import lombok.Data;
 
@@ -7,10 +7,10 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class LoginRequest {
-    @NotBlank
+    @NotBlank(message = "이메일을 입력해주세요")
     @Email
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "비밀번호를 입력해주세요")
     private String password;
 }

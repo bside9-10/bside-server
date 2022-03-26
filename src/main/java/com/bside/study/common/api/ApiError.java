@@ -9,7 +9,7 @@ public class ApiError {
     private final int status;
 
     ApiError(Throwable throwable, HttpStatus status) {
-        this(throwable.getMessage(), status);
+        this(throwable.getCause().getMessage(), status);
     }
 
     ApiError(String message, HttpStatus status) {
