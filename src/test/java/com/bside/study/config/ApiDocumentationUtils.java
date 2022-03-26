@@ -7,10 +7,10 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 
 public interface ApiDocumentationUtils {
     static OperationRequestPreprocessor getDocumentRequest() {
-        return preprocessRequest(prettyPrint());
+        return preprocessRequest(modifyUris().scheme("http").host("133.186.146.120"), prettyPrint());
     }
 
     static OperationResponsePreprocessor getDocumentResponse() {
-        return preprocessResponse(prettyPrint());
+        return preprocessResponse(modifyUris().scheme("http").host("133.186.146.120"), prettyPrint());
     }
 }

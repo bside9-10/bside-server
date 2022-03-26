@@ -3,6 +3,8 @@ package com.bside.study.goal.controller;
 import com.bside.study.common.api.ApiResult;
 import com.bside.study.goal.entity.Goal;
 import com.bside.study.goal.service.GoalService;
+import com.bside.study.security.CurrentUser;
+import com.bside.study.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,7 @@ public class GoalController {
     private final GoalService goalService;
 
     @GetMapping("/goals")
-    public ApiResult<List<Goal>> findAll() {
+    public ApiResult<List<Goal>> findAll(@CurrentUser UserPrincipal userPrincipal) {
         return success(goalService.findAll());
     }
 

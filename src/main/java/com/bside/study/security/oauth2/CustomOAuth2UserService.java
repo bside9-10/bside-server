@@ -5,6 +5,7 @@ import com.bside.study.security.UserPrincipal;
 import com.bside.study.security.oauth2.user.OAuth2UserInfo;
 import com.bside.study.security.oauth2.user.OAuth2UserInfoFactory;
 import com.bside.study.user.entity.AuthProvider;
+import com.bside.study.user.entity.Role;
 import com.bside.study.user.entity.User;
 import com.bside.study.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,6 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                         user.getProvider() + " account. Please use your " + user.getProvider() +
                         " account to login.");
             }
-            user = updateExistingUser(user, oAuth2UserInfo);
         } else {
             user = registerNewUser(oAuth2UserRequest, oAuth2UserInfo);
         }
@@ -68,15 +68,10 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                 .providerId(oAuth2UserInfo.getId())
                 .name(oAuth2UserInfo.getName())
                 .email(oAuth2UserInfo.getEmail())
-                .imageUrl(oAuth2UserInfo.getImageUrl())
+                .role(Role.USER)
                 .build();
 
         return userRepository.save(user);
-    }
-
-    private User updateExistingUser(User existingUser, OAuth2UserInfo oAuth2UserInfo) {
-        existingUser.updateNameAndImageUrl(oAuth2UserInfo.getName(), oAuth2UserInfo.getImageUrl());
-        return userRepository.save(existingUser);
     }
 
 }
