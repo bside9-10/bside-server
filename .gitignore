@@ -38,3 +38,6 @@ out/
 
 application-oauth.yml
 application-db.yml
+
+BOOT-INF
+src/main/resources/static/docs/**
