@@ -75,9 +75,10 @@ class GoalControllerTest {
                                 requestHeaders(headerWithName("Authorization").description("Json Web Token")),
                                 responseFields(
                                         fieldWithPath("success").type(JsonFieldType.BOOLEAN).description("성공 여부"),
-                                        fieldWithPath("response").type(JsonFieldType.ARRAY).description("사용자 id"),
-//                                        fieldWithPath("response.name").type(JsonFieldType.STRING).description("사용자 이름"),
-//                                        fieldWithPath("response.email").type(JsonFieldType.STRING).description("사용자 이메일"),
+                                        fieldWithPath("response[].id").type(JsonFieldType.NUMBER).description("목적 pk"),
+                                        fieldWithPath("response[].goalTitle").type(JsonFieldType.STRING).description("목적 타이틀"),
+                                        fieldWithPath("response[].createdDate").type(JsonFieldType.STRING).description("생성일"),
+                                        fieldWithPath("response[].modifiedDate").type(JsonFieldType.STRING).description("수정일"),
                                         fieldWithPath("error").type(JsonFieldType.NULL).description("에러")
                                 )
                         )
