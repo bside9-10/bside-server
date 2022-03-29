@@ -4,24 +4,23 @@ import com.bside.study.common.entity.LocalDateTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Entity
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class GoalCategory extends LocalDateTimeEntity {
+public class GoalCategoryDetail extends LocalDateTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "goal_category_id")
+    @Column(name = "goal_category_detail_id")
     private Long id;
 
-    private String category;
+    private String detail;
 
-    @OneToMany(mappedBy = "goalCategory")
-    private List<GoalCategoryDetail> goalCategoryDetails = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "goal_category_id")
+    private GoalCategory goalCategory;
 
 }

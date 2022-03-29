@@ -25,4 +25,9 @@ public class Goal extends LocalDateTimeEntity {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "goal_category_id")
     private GoalCategory goalCategory;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "goal_category_detail_id")
+    private GoalCategoryDetail goalCategoryDetail;
+
 }

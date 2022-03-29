@@ -77,10 +77,6 @@ include::{snippets}/user-me/http-request.adoc[]
 
 include::{snippets}/user-me/http-response.adoc[]
 
-.request-fields
-
-include::{snippets}/user-me/request-fields.adoc[]
-
 .response-fields
 
 include::{snippets}/user-me/response-fields.adoc[]
@@ -104,6 +100,24 @@ include::{snippets}/goal-category-list/http-response.adoc[]
 .response-fields
 
 include::{snippets}/goal-category-list/response-fields.adoc[]
+
+=== 목적 카테고리 상세 조회
+
+.curl
+
+include::{snippets}/goal-category-detail-list/curl-request.adoc[]
+
+.http-request
+
+include::{snippets}/goal-category-detail-list/http-request.adoc[]
+
+.http-response
+
+include::{snippets}/goal-category-detail-list/http-response.adoc[]
+
+.response-fields
+
+include::{snippets}/goal-category-detail-list/response-fields.adoc[]
 
 === 목적 전체 조회(내 목적 조회)
 
