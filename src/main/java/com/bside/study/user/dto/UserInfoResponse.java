@@ -1,8 +1,10 @@
 package com.bside.study.user.dto;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Getter;
 
-@Data
+@Getter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserInfoResponse {
     private Long id;
     private String name;

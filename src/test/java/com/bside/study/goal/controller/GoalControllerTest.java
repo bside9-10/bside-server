@@ -67,7 +67,7 @@ class GoalControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(handler().handlerType(GoalController.class))
-                .andExpect(handler().methodName("findAll"))
+                .andExpect(handler().methodName("findGoalsByUserId"))
                 .andExpect(jsonPath("$.success", is(true)))
                 .andDo(document("goal-list",
                                 ApiDocumentationUtils.getDocumentRequest(),
@@ -76,9 +76,64 @@ class GoalControllerTest {
                                 responseFields(
                                         fieldWithPath("success").type(JsonFieldType.BOOLEAN).description("성공 여부"),
                                         fieldWithPath("response[].id").type(JsonFieldType.NUMBER).description("목적 pk"),
-                                        fieldWithPath("response[].goalTitle").type(JsonFieldType.STRING).description("목적 타이틀"),
-                                        fieldWithPath("response[].createdDate").type(JsonFieldType.STRING).description("생성일"),
-                                        fieldWithPath("response[].modifiedDate").type(JsonFieldType.STRING).description("수정일"),
+                                        fieldWithPath("response[].name").type(JsonFieldType.STRING).description("사용자 이름"),
+                                        fieldWithPath("response[].category").type(JsonFieldType.STRING).description("목적 카테고리"),
+                                        fieldWithPath("response[].detail").type(JsonFieldType.STRING).description("목적 카테고리 상세"),
+                                        fieldWithPath("error").type(JsonFieldType.NULL).description("에러")
+                                )
+                        )
+                );
+    }
+
+    @Test
+    void 목적_카테고리_조회() throws Exception {
+        mockMvc.perform(
+                        get("/api/v1/goals/categories")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .header(HttpHeaders.AUTHORIZATION, "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJic2lkZUBnbWFpbC5jb20iLCJpYXQiOjE2NDgyOTgyOTYsImV4cCI6MTY0OTE2MjI4Nn0.XdmLA8SzhZB4DHKbiVtDd9NHcg3KLTPHUpSZg0567yUgvB_YD_iEDYzJerEeNNy-mRr5i9QSccWqaX-QIenj1w")
+                )
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(handler().handlerType(GoalController.class))
+                .andExpect(handler().methodName("findGoalCategories"))
+                .andExpect(jsonPath("$.success", is(true)))
+                .andDo(document("goal-category-list",
+                                ApiDocumentationUtils.getDocumentRequest(),
+                                ApiDocumentationUtils.getDocumentResponse(),
+                                requestHeaders(headerWithName("Authorization").description("Json Web Token")),
+                                responseFields(
+                                        fieldWithPath("success").type(JsonFieldType.BOOLEAN).description("성공 여부"),
+                                        fieldWithPath("response[].id").type(JsonFieldType.NUMBER).description("목적 카테고리 pk"),
+                                        fieldWithPath("response[].category").type(JsonFieldType.STRING).description("목적 카테고리"),
+                                        fieldWithPath("error").type(JsonFieldType.NULL).description("에러")
+                                )
+                        )
+                );
+    }
+
+    @Test
+    void 목적_카테고리_상세_조회() throws Exception {
+        mockMvc.perform(
+                        get("/api/v1/goals/categories/details")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .header(HttpHeaders.AUTHORIZATION, "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJic2lkZUBnbWFpbC5jb20iLCJpYXQiOjE2NDgyOTgyOTYsImV4cCI6MTY0OTE2MjI4Nn0.XdmLA8SzhZB4DHKbiVtDd9NHcg3KLTPHUpSZg0567yUgvB_YD_iEDYzJerEeNNy-mRr5i9QSccWqaX-QIenj1w")
+                )
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(handler().handlerType(GoalController.class))
+                .andExpect(handler().methodName("findGoalCategoryDetails"))
+                .andExpect(jsonPath("$.success", is(true)))
+                .andDo(document("goal-category-detail-list",
+                                ApiDocumentationUtils.getDocumentRequest(),
+                                ApiDocumentationUtils.getDocumentResponse(),
+                                requestHeaders(headerWithName("Authorization").description("Json Web Token")),
+                                responseFields(
+                                        fieldWithPath("success").type(JsonFieldType.BOOLEAN).description("성공 여부"),
+                                        fieldWithPath("response[].id").type(JsonFieldType.NUMBER).description("목적 카테고리 pk"),
+                                        fieldWithPath("response[].category").type(JsonFieldType.STRING).description("목적 카테고리"),
+                                        fieldWithPath("response[].detail").type(JsonFieldType.STRING).description("목적 카테고리 상세"),
                                         fieldWithPath("error").type(JsonFieldType.NULL).description("에러")
                                 )
                         )
