@@ -1,6 +1,7 @@
 -- 기본 사용자 추가
 INSERT INTO user(user_id, email, name, password, provider, provider_id, `role`, created_date, modified_date) VALUES(1, 'lifeplan@gmail.com', '관리자', '$2a$10$RJFLJ9r15drjz9xxxSTSiurBbnVOFMK2zk2Kzh7XnNXuThCIhySLC', 'local', '', 'ADMIN', now(), now());
 INSERT INTO user(user_id, email, name, password, provider, provider_id, `role`, created_date, modified_date) VALUES(2, 'bside@gmail.com', '홍길동', '$2a$10$RJFLJ9r15drjz9xxxSTSiurBbnVOFMK2zk2Kzh7XnNXuThCIhySLC', 'local', '', 'USER', now(), now());
+INSERT INTO user(user_id, email, name, password, provider, provider_id, `role`, created_date, modified_date) VALUES(3, 'testUser@gmail.com', '테스트1', '$2a$10$RJFLJ9r15drjz9xxxSTSiurBbnVOFMK2zk2Kzh7XnNXuThCIhySLC', 'local', '', 'USER', now(), now());
 
 -- 목적 카테고리
 INSERT INTO goal_category(created_date, modified_date, category) VALUES(now(), now(), '운동');
@@ -26,6 +27,11 @@ INSERT INTO goal_category_detail(created_date, modified_date, detail, goal_categ
 
 -- 목적
 INSERT INTO goal(created_date, modified_date, goal_category_id, goal_category_detail_id, user_id) VALUES(now(), now(), 2, 1, 2);
+INSERT INTO goal(created_date, modified_date, goal_category_id, goal_category_detail_id, user_id) VALUES(now(), now(), 2, 2, 2);
 INSERT INTO goal(created_date, modified_date, goal_category_id, goal_category_detail_id, user_id) VALUES(now(), now(), 3, 3, 2);
+INSERT INTO goal(created_date, modified_date, goal_category_id, goal_category_detail_id, user_id) VALUES(now(), now(), 5, 4, 2);
 INSERT INTO goal(created_date, modified_date, goal_category_id, goal_category_detail_id, user_id) VALUES(now(), now(), 5, 5, 2);
+INSERT INTO goal(created_date, modified_date, goal_category_id, goal_category_detail_id, user_id) VALUES(now(), now(), 5, 6, 2);
 INSERT INTO goal(created_date, modified_date, goal_category_id, goal_category_detail_id, user_id) VALUES(now(), now(), 8, 7, 2);
+INSERT INTO goal(created_date, modified_date, goal_category_id, goal_category_detail_id, user_id) VALUES(now(), now(), 2, 1, 3);
+INSERT INTO goal(created_date, modified_date, goal_category_id, goal_category_detail_id, user_id) VALUES(now(), now(), 3, 3, 3);

@@ -125,8 +125,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/api/v1/signup", "/api/v1/login")
                 .permitAll()
-                .antMatchers("/api/v1/users/**", "/api/v1/goals/**")
-                .hasAnyAuthority(USER.getRole())
+                //TODO: 소셜로그인 구현되기 전까지 권한 제거
+//                .antMatchers("/api/v1/**")
+//                .hasAnyAuthority(USER.getRole())
                 .and()
                 .oauth2Login()
                 .authorizationEndpoint()
