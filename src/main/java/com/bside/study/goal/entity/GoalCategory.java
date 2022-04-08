@@ -22,6 +22,6 @@ public class GoalCategory extends LocalDateTimeEntity {
     private String category;
 
     @OneToMany(mappedBy = "goalCategory")
-    private List<GoalCategoryDetail> goalCategoryDetails = new ArrayList<>();
+    private List<GoalCategoryDetail> goalCategoryDetails;
 
 }
