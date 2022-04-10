@@ -8,6 +8,7 @@ import com.bside.study.goal.entity.Goal;
 import com.bside.study.goal.entity.GoalCategory;
 import com.bside.study.goal.repository.GoalCategoryRepository;
 import com.bside.study.goal.repository.GoalRepository;
+import com.bside.study.security.CustomUserDetailsService;
 import com.bside.study.user.entity.User;
 import com.bside.study.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GoalService {
 
-    private final UserRepository userRepository;
+    private final CustomUserDetailsService userDetailsService;
     private final GoalRepository goalRepository;
     private final GoalCategoryRepository goalCategoryRepository;
 
@@ -28,8 +29,7 @@ public class GoalService {
     }
 
     public SaveGoalCategoryResponseDto saveGoalCategory(Long userId, SaveGoalCategoryRequestDto requestDto) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
+        User user = userDetailsService.loadUserById(userId);
 
         Long goalCategoryId = requestDto.getGoalCategoryId();
         GoalCategory goalCategory = goalCategoryRepository.findById(goalCategoryId)

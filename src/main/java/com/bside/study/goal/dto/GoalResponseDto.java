@@ -10,13 +10,11 @@ public class GoalResponseDto {
     private Long id;
     private String name;
     private String category;
-    private String detail;
 
     @QueryProjection
-    public GoalResponseDto(Long id, String name, String category, String detail) {
+    public GoalResponseDto(Long id, String name, String category) {
         this.id = id;
         this.name = name;
         this.category = category;
-        this.detail = detail;
     }
 }

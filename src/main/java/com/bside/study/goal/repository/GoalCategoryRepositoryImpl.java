@@ -18,7 +18,7 @@ public class GoalCategoryRepositoryImpl implements GoalCategoryRepositoryCustom 
     }
 
     @Override
-    public List<GoalCategoryResponseDto> findGoalCategoryLimit6() {
+    public List<GoalCategoryResponseDto> findGoalCategories() {
         return queryFactory
                 .select(
                         new QGoalCategoryResponseDto(
@@ -27,7 +27,6 @@ public class GoalCategoryRepositoryImpl implements GoalCategoryRepositoryCustom 
                         )
                 )
                 .from(goalCategory)
-                .limit(6)
                 .fetch();
     }
 

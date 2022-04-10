@@ -13,7 +13,7 @@ public class GoalCategoryService {
 
     private final GoalCategoryRepository goalCategoryRepository;
 
-    public List<GoalCategoryResponseDto> findGoalCategoryLimit6() {
-        return goalCategoryRepository.findGoalCategoryLimit6();
+    public List<GoalCategoryResponseDto> findGoalCategories() {
+        return goalCategoryRepository.findGoalCategories();
     }
 }

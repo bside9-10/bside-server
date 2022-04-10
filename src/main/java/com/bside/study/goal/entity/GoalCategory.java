@@ -4,7 +4,6 @@ import com.bside.study.common.entity.LocalDateTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -20,8 +19,5 @@ public class GoalCategory extends LocalDateTimeEntity {
     private Long id;
 
     private String category;
-
-    @OneToMany(mappedBy = "goalCategory")
-    private List<GoalCategoryDetail> goalCategoryDetails;
 
 }

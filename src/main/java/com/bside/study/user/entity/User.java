@@ -2,10 +2,10 @@ package com.bside.study.user.entity;
 
 import com.bside.study.common.entity.LocalDateTimeEntity;
 import com.bside.study.goal.entity.Goal;
+import com.bside.study.goal.entity.GoalDetail;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -37,7 +37,10 @@ public class User extends LocalDateTimeEntity {
     private String providerId;
 
     @OneToMany(mappedBy = "user")
-    private List<Goal> goals = new ArrayList<>();
+    private List<Goal> goals;
+
+    @OneToMany(mappedBy = "user")
+    private List<GoalDetail> goalDetails;
 
     public void encodePassword(String encodePassword) {
         this.password = encodePassword;
