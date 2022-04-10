@@ -100,6 +100,14 @@ public class GoalController {
         return success("success delete goalDetailId : " + goalDetailId);
     }
 
+    /**
+     * 세부 목표 변경
+     *
+     * @param userId 사용자 아이디
+     * @param goalDetailId 세부 목표 아이디
+     * @param requestDto 목표 DTO
+     * @return String
+     */
     @PatchMapping("/goals/{userId}/details/{goalDetailId}")
     public ApiResult<String> updateGoalDetail(
             @PathVariable("userId") Long userId,
@@ -107,6 +115,21 @@ public class GoalController {
             @Valid @RequestBody SaveGoalDetailRequestDto requestDto) {
         goalDetailService.updateGoalDetail(goalDetailId, requestDto);
         return success("success update goalDetailId : " + goalDetailId);
+    }
+
+    /**
+     * 실천 가능 시간 저장
+     *
+     * @param userId 사용자 아이디
+     * @param requestDto 목표 DTO
+     * @return String
+     */
+    @PostMapping("/goals/{userId}/available-time")
+    public ApiResult<String> saveGoalAvailableTime(
+            @PathVariable("userId") Long userId,
+            @Valid @RequestBody SaveGoalAvailableTimeRequestDto requestDto) {
+        goalService.saveGoalAvailableTime(userId, requestDto);
+        return success("success save");
     }
 
 }

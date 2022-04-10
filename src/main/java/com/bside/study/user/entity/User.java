@@ -2,6 +2,7 @@ package com.bside.study.user.entity;
 
 import com.bside.study.common.entity.LocalDateTimeEntity;
 import com.bside.study.goal.entity.Goal;
+import com.bside.study.goal.entity.GoalAvailableTime;
 import com.bside.study.goal.entity.GoalDetail;
 import lombok.*;
 
@@ -41,6 +42,9 @@ public class User extends LocalDateTimeEntity {
 
     @OneToMany(mappedBy = "user")
     private List<GoalDetail> goalDetails;
+
+    @OneToMany(mappedBy = "user")
+    private List<GoalAvailableTime> goalAvailableTimes;
 
     public void encodePassword(String encodePassword) {
         this.password = encodePassword;
