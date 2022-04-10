@@ -14,6 +14,7 @@ import com.bside.study.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,6 +23,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class GoalDetailService {
 
     private final ModelMapper modelMapper;
@@ -73,5 +75,9 @@ public class GoalDetailService {
         }
 
         return goalStatus;
+    }
+
+    public void deleteGoalDetail(Long goalDetailId, Long userId) {
+        goalDetailRepository.deleteByGoalDetailIdAndUserId(goalDetailId, userId);
     }
 }

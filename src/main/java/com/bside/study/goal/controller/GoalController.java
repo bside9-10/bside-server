@@ -85,4 +85,18 @@ public class GoalController {
         return success(goalDetailService.saveGoalDetail(userId, requestDto));
     }
 
+    /**
+     * 세부 목표 삭제
+     *
+     * @param userId 사용자 아이디
+     * @param goalDetailId 세부 목표 아이디
+     * @return String
+     */
+    @DeleteMapping("/goals/{userId}/details/{goalDetailId}")
+    public ApiResult<String> deleteGoalDetail(
+            @PathVariable("userId") Long userId,
+            @PathVariable("goalDetailId") Long goalDetailId) {
+        goalDetailService.deleteGoalDetail(goalDetailId, userId);
+        return success("success delete goalDetailId : " + goalDetailId);
+    }
 }

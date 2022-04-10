@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface GoalDetailRepositoryCustom {
     List<GoalDetailResponseDto> findGoalDetailByUserId(Long userId);
+
+    void deleteByGoalDetailIdAndUserId(Long goalDetailId, Long userId);
 }

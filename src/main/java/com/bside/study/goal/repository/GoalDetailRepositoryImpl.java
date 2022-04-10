@@ -37,4 +37,12 @@ public class GoalDetailRepositoryImpl implements GoalDetailRepositoryCustom {
                 .fetch();
     }
 
+    @Override
+    public void deleteByGoalDetailIdAndUserId(Long goalDetailId, Long userId) {
+        queryFactory
+                .delete(goalDetail)
+                .where(goalDetail.id.eq(goalDetailId).and(goalDetail.user.id.eq(userId)))
+                .execute();
+    }
+
 }
