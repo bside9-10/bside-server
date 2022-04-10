@@ -49,7 +49,7 @@ public class GoalController {
     /**
      * 목표 저장
      *
-     * @param userId 사용자 아이디
+     * @param userId     사용자 아이디
      * @param requestDto 목표 DTO
      * @return SaveGoalCategoryResponseDto
      */
@@ -74,7 +74,7 @@ public class GoalController {
     /**
      * 세부 목표 저장
      *
-     * @param userId 사용자 아이디
+     * @param userId     사용자 아이디
      * @param requestDto 목표 DTO
      * @return SaveGoalDetailResponseDto
      */
@@ -88,7 +88,7 @@ public class GoalController {
     /**
      * 세부 목표 삭제
      *
-     * @param userId 사용자 아이디
+     * @param userId       사용자 아이디
      * @param goalDetailId 세부 목표 아이디
      * @return String
      */
@@ -96,7 +96,17 @@ public class GoalController {
     public ApiResult<String> deleteGoalDetail(
             @PathVariable("userId") Long userId,
             @PathVariable("goalDetailId") Long goalDetailId) {
-        goalDetailService.deleteGoalDetail(goalDetailId, userId);
+        goalDetailService.deleteGoalDetail(goalDetailId);
         return success("success delete goalDetailId : " + goalDetailId);
     }
+
+    @PatchMapping("/goals/{userId}/details/{goalDetailId}")
+    public ApiResult<String> updateGoalDetail(
+            @PathVariable("userId") Long userId,
+            @PathVariable("goalDetailId") Long goalDetailId,
+            @Valid @RequestBody SaveGoalDetailRequestDto requestDto) {
+        goalDetailService.updateGoalDetail(goalDetailId, requestDto);
+        return success("success update goalDetailId : " + goalDetailId);
+    }
+
 }

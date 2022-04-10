@@ -1,6 +1,7 @@
 package com.bside.study.goal.entity;
 
 import com.bside.study.common.entity.LocalDateTimeEntity;
+import com.bside.study.goal.dto.SaveGoalDetailRequestDto;
 import com.bside.study.user.entity.User;
 import lombok.*;
 
@@ -30,17 +31,21 @@ public class GoalDetail extends LocalDateTimeEntity {
 
     private LocalDate endDate;
 
-    private LocalTime startTime;
+    private String startTime;
 
-    private LocalTime endTime;
+    private String endTime;
 
     private boolean notification;
-
-    @Enumerated(EnumType.STRING)
-    private GoalStatus goalStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
+    public void updateGoalDetail(SaveGoalDetailRequestDto requestDto) {
+        this.startDate = requestDto.getStartDate();
+        this.endDate = requestDto.getEndDate();
+        this.startTime = requestDto.getStartTime();
+        this.endTime = requestDto.getEndTime();
+        this.notification = requestDto.isNotification();
+    }
 }

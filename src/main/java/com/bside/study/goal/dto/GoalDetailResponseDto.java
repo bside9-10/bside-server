@@ -16,13 +16,12 @@ public class GoalDetailResponseDto {
     private String title;
     private LocalDate startDate;
     private LocalDate endDate;
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private String startTime;
+    private String endTime;
     private boolean notification;
-    private GoalStatus goalStatus;
 
     @QueryProjection
-    public GoalDetailResponseDto(Long id, String goalCategoryName, String title, LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime, boolean notification, GoalStatus goalStatus) {
+    public GoalDetailResponseDto(Long id, String goalCategoryName, String title, LocalDate startDate, LocalDate endDate, String startTime, String endTime, boolean notification) {
         this.id = id;
         this.goalCategoryName = goalCategoryName;
         this.title = title;
@@ -31,6 +30,5 @@ public class GoalDetailResponseDto {
         this.startTime = startTime;
         this.endTime = endTime;
         this.notification = notification;
-        this.goalStatus = goalStatus;
     }
 }

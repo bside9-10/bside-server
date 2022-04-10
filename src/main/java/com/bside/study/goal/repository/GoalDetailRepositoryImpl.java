@@ -29,20 +29,11 @@ public class GoalDetailRepositoryImpl implements GoalDetailRepositoryCustom {
                                 goalDetail.endDate,
                                 goalDetail.startTime,
                                 goalDetail.endTime,
-                                goalDetail.notification,
-                                goalDetail.goalStatus
+                                goalDetail.notification
                         )
                 )
                 .from(goalDetail)
                 .fetch();
-    }
-
-    @Override
-    public void deleteByGoalDetailIdAndUserId(Long goalDetailId, Long userId) {
-        queryFactory
-                .delete(goalDetail)
-                .where(goalDetail.id.eq(goalDetailId).and(goalDetail.user.id.eq(userId)))
-                .execute();
     }
 
 }
