@@ -5,6 +5,7 @@ import com.bside.study.user.entity.User;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Entity
@@ -26,8 +27,11 @@ public class Goal extends LocalDateTimeEntity {
     @JoinColumn(name = "goal_category_id")
     private GoalCategory goalCategory;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "goal_category_detail_id")
-    private GoalCategoryDetail goalCategoryDetail;
+    @Column(nullable = false)
+    private String goalCategoryName;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "goal_detail_id")
+    private List<GoalDetail> goalDetail;
 
 }
