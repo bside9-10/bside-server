@@ -132,4 +132,17 @@ public class GoalController {
         return success("success save");
     }
 
+    /**
+     * 오늘의 라플 리스트 조회
+     *
+     * @return String
+     */
+    @GetMapping("/goals/{userId}/today")
+    public ApiResult<List<TodayGoalResponseDto>> findTodayGoalsByUserId(
+            @PathVariable("userId") Long userId,
+            @RequestParam(name = "date") String date) {
+
+        return success(goalService.findTodayGoalsByUserId(userId, date));
+    }
+
 }
