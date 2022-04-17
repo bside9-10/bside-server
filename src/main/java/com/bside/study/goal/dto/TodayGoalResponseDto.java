@@ -13,14 +13,11 @@ public class TodayGoalResponseDto {
 
     private Long goalId;
     private String category;
-    private List<GoalDetailResponseDto> goalDetails;
+    private List<TodayGoalDetailDto> goalDetails;
 
-    public TodayGoalResponseDto(Goal entity) {
+    public TodayGoalResponseDto(Goal entity, List<TodayGoalDetailDto> goalDetails) {
         this.goalId = entity.getId();
         this.category = entity.getGoalCategoryName();
-        this.goalDetails = entity.getGoalDetails()
-                .stream()
-                .map(GoalDetailResponseDto::new)
-                .collect(Collectors.toList());
+        this.goalDetails = goalDetails;
     }
 }

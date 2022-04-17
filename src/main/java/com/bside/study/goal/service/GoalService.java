@@ -66,15 +66,10 @@ public class GoalService {
 
         findGoals.forEach(goal -> {
             // 목표 기간 중인 경우 조회, 매일 평일 주말에 해당하는 날짜만 조회
-            Long goalId = goal.getId();
+            List<TodayGoalDetailDto> goalDetails = goalDetailRepository.findTodayGoalDetailByGoalId(goal, date);
 
-            goalDetailRepository.findGoalDetailByGoalIdBetween(date);
-
-
-            result.add(new TodayGoalResponseDto(goal));
+            result.add(new TodayGoalResponseDto(goal, goalDetails));
         });
-
-
 
         return result;
     }

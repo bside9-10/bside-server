@@ -78,17 +78,16 @@ public class GoalDetailService {
         GoalDetail goalDetail = GoalDetail.builder()
                 .goal(goal)
                 .user(user)
-                .title(requestDto.getTitle())               // 세부목표
-                .startDate(requestDto.getStartDate())       // 시작날짜
-                .endDate(requestDto.getEndDate())           // 종료날짜
-                .startTime(requestDto.getStartTime())       // 시작시간
-                .endTime(requestDto.getEndTime())           // 종료시간
-                .notification(requestDto.isNotification())  // 알림여부
-                .goalDateStatus(requestDto.getGoalDateStatus())
+                .title(requestDto.getTitle())                   // 세부목표
+                .startDate(requestDto.getStartDate())           // 시작날짜
+                .endDate(requestDto.getEndDate())               // 종료날짜
+                .startTime(requestDto.getStartTime())           // 시작시간
+                .endTime(requestDto.getEndTime())               // 종료시간
+                .notification(requestDto.isNotification())      // 알림여부
+                .goalDateStatus(requestDto.getGoalDateStatus()) // 매일, 주말, 평일여부
                 .build();
 
-        GoalDetail saveGoalDetail = goalDetailRepository.save(goalDetail);
-        return saveGoalDetail;
+        return goalDetailRepository.save(goalDetail);
     }
 
     private void saveGoalCalendar(GoalDetail saveGoalDetail, LocalDate localDate) {
