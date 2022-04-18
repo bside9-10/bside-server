@@ -1,5 +1,6 @@
 package com.bside.study.goal.entity;
 
+import com.bside.study.common.entity.LocalDateTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class GoalCalendar {
+public class GoalCalendar extends LocalDateTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,5 +27,9 @@ public class GoalCalendar {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "goal_detail_id")
     private GoalDetail goalDetail;
+
+    public void checkCompleted() {
+        this.completed = !completed;
+    }
 
 }

@@ -111,4 +111,9 @@ public class GoalDetailService {
         goalDetail.updateGoalDetail(requestDto);
         goalDetailRepository.save(goalDetail);
     }
+
+    public void checkTodayGoalCompleted(Long userId, Long goalDetailId, String date) {
+        GoalCalendar goalCalendar = goalCalendarRepository.findByGoalDetailIdAndGoalDate(goalDetailId, date);
+        goalCalendar.checkCompleted();
+    }
 }
