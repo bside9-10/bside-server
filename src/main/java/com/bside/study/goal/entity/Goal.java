@@ -30,8 +30,7 @@ public class Goal extends LocalDateTimeEntity {
     @Column(nullable = false)
     private String goalCategoryName;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "goal_detail_id")
-    private List<GoalDetail> goalDetail;
+    @OneToMany(mappedBy = "goal")
+    private List<GoalDetail> goalDetails;
 
 }

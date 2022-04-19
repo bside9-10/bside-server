@@ -8,6 +8,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Getter
 @Entity
@@ -37,9 +38,15 @@ public class GoalDetail extends LocalDateTimeEntity {
 
     private boolean notification;
 
+    @Enumerated(EnumType.STRING)
+    private GoalDateStatus goalDateStatus;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(mappedBy = "goalDetail")
+    private List<GoalCalendar> goalCalendars;
 
     public void updateGoalDetail(SaveGoalDetailRequestDto requestDto) {
         this.startDate = requestDto.getStartDate();
@@ -47,5 +54,6 @@ public class GoalDetail extends LocalDateTimeEntity {
         this.startTime = requestDto.getStartTime();
         this.endTime = requestDto.getEndTime();
         this.notification = requestDto.isNotification();
+        this.goalDateStatus = requestDto.getGoalDateStatus();
     }
 }

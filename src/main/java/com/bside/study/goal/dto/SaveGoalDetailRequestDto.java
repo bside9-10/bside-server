@@ -1,5 +1,6 @@
 package com.bside.study.goal.dto;
 
+import com.bside.study.goal.entity.GoalDateStatus;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -28,4 +29,7 @@ public class SaveGoalDetailRequestDto {
 
     @NotNull(message = "알림여부를 설정하세요")
     private boolean notification;
+
+    @NotNull(message = "요일을 설정하세요")
+    private GoalDateStatus goalDateStatus;
 }

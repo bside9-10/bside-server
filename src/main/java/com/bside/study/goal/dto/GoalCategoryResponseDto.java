@@ -7,12 +7,12 @@ import lombok.Getter;
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GoalCategoryResponseDto {
-    private Long id;
+    private Long goalCategoryId;
     private String category;
 
     @QueryProjection
-    public GoalCategoryResponseDto(Long id, String category) {
-        this.id = id;
+    public GoalCategoryResponseDto(Long goalCategoryId, String category) {
+        this.goalCategoryId = goalCategoryId;
         this.category = category;
     }
 }

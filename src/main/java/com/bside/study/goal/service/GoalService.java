@@ -1,15 +1,13 @@
 package com.bside.study.goal.service;
 
 import com.bside.study.errors.ResourceNotFoundException;
-import com.bside.study.goal.dto.GoalResponseDto;
-import com.bside.study.goal.dto.SaveGoalAvailableTimeRequestDto;
-import com.bside.study.goal.dto.SaveGoalCategoryRequestDto;
-import com.bside.study.goal.dto.SaveGoalCategoryResponseDto;
+import com.bside.study.goal.dto.*;
 import com.bside.study.goal.entity.Goal;
 import com.bside.study.goal.entity.GoalAvailableTime;
 import com.bside.study.goal.entity.GoalCategory;
 import com.bside.study.goal.repository.GoalAvailableTimeRepository;
 import com.bside.study.goal.repository.GoalCategoryRepository;
+import com.bside.study.goal.repository.GoalDetailRepository;
 import com.bside.study.goal.repository.GoalRepository;
 import com.bside.study.security.CustomUserDetailsService;
 import com.bside.study.user.entity.User;
@@ -18,6 +16,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,8 +24,10 @@ import java.util.List;
 @Transactional
 public class GoalService {
 
+    private final ModelMapper modelMapper;
     private final CustomUserDetailsService userDetailsService;
     private final GoalRepository goalRepository;
+    private final GoalDetailRepository goalDetailRepository;
     private final GoalCategoryRepository goalCategoryRepository;
     private final GoalAvailableTimeRepository goalAvailableTimeRepository;
 
@@ -55,5 +56,21 @@ public class GoalService {
                 .build();
 
         goalAvailableTimeRepository.save(goalAvailableTime);
+    }
+
+    public List<TodayGoalResponseDto> findTodayGoalsByUserId(Long userId, String date) {
+        User user = userDetailsService.loadUserById(userId);
+        List<Goal> findGoals = goalRepository.findByUserId(user.getId());
+
+        List<TodayGoalResponseDto> result = new ArrayList<>();
+
+        findGoals.forEach(goal -> {
+            // 목표 기간 중인 경우 조회, 매일 평일 주말에 해당하는 날짜만 조회
+            List<TodayGoalDetailDto> goalDetails = goalDetailRepository.findTodayGoalDetailByGoalId(goal, date);
+
+            result.add(new TodayGoalResponseDto(goal, goalDetails));
+        });
+
+        return result;
     }
 }

@@ -108,7 +108,7 @@ public class GoalController {
      * @param requestDto 목표 DTO
      * @return String
      */
-    @PatchMapping("/goals/{userId}/details/{goalDetailId}")
+    @PutMapping("/goals/{userId}/details/{goalDetailId}")
     public ApiResult<String> updateGoalDetail(
             @PathVariable("userId") Long userId,
             @PathVariable("goalDetailId") Long goalDetailId,
@@ -129,6 +129,39 @@ public class GoalController {
             @PathVariable("userId") Long userId,
             @Valid @RequestBody SaveGoalAvailableTimeRequestDto requestDto) {
         goalService.saveGoalAvailableTime(userId, requestDto);
+        return success("success save");
+    }
+
+    /**
+     * 오늘의 라플 리스트 조회
+     *
+     * @param userId 사용자 아이디
+     * @param date 조회 날짜
+     * @return String
+     */
+    @GetMapping("/goals/{userId}/today")
+    public ApiResult<List<TodayGoalResponseDto>> findTodayGoalsByUserId(
+            @PathVariable("userId") Long userId,
+            @RequestParam(name = "date") String date) {
+
+        return success(goalService.findTodayGoalsByUserId(userId, date));
+    }
+
+    /**
+     * 오늘의 라플 체크
+     *
+     * @param userId 사용자 아이디
+     * @param goalDetailId 세부 목표 아이디
+     * @param date 조회 날짜
+     * @return String
+     */
+    @PostMapping("/goals/{userId}/today/{goalDetailId}")
+    public ApiResult<String> checkTodayGoalCompleted(
+            @PathVariable("userId") Long userId,
+            @PathVariable("goalDetailId") Long goalDetailId,
+            @RequestParam(name = "date") String date) {
+
+        goalDetailService.checkTodayGoalCompleted(userId, goalDetailId, date);
         return success("success save");
     }
 

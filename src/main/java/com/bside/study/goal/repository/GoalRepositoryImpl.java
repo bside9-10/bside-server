@@ -23,8 +23,8 @@ public class GoalRepositoryImpl implements GoalRepositoryCustom {
                 .select(
                         new QGoalResponseDto(
                                 goal.id,
-                                goal.user.name,
-                                goal.goalCategory.category
+                                goal.goalCategoryName,
+                                goal.createdDate
                         )
                 )
                 .from(goal)
