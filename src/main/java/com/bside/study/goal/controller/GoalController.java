@@ -25,15 +25,17 @@ public class GoalController {
     private final GoalDetailService goalDetailService;
 
     /**
-     * 라플 리스트 조회
+     * 라플 리스트 카테고리별 조회
      *
      * @param userId 사용자 아이디
      * @return List
      */
     @GetMapping("/goals/{userId}")
-    public ApiResult<List<GoalResponseDto>> findGoalsByUserId(@PathVariable("userId") Long userId) {
-        List<GoalResponseDto> goalsByUserId = goalService.findGoalsByUserId(userId);
-        return success(goalsByUserId);
+    public ApiResult<List<LafflesResponseDto>> findGoalsByUserId(
+            @PathVariable("userId") Long userId,
+            @RequestParam(name = "categoryId") String categoryId) {
+
+        return success(goalService.findGoalsByUserIdAndCategoryId(userId, Long.valueOf(categoryId)));
     }
 
     /**
@@ -43,6 +45,7 @@ public class GoalController {
      */
     @GetMapping("/goals/categories")
     public ApiResult<List<GoalCategoryResponseDto>> findGoalCategories() {
+
         return success(goalCategoryService.findGoalCategories());
     }
 
@@ -57,6 +60,7 @@ public class GoalController {
     public ApiResult<SaveGoalCategoryResponseDto> saveGoalCategory(
             @PathVariable("userId") Long userId,
             @Valid @RequestBody SaveGoalCategoryRequestDto requestDto) {
+
         return success(goalService.saveGoalCategory(userId, requestDto));
     }
 
@@ -67,7 +71,9 @@ public class GoalController {
      * @return List
      */
     @GetMapping("/goals/{userId}/details")
-    public ApiResult<List<GoalDetailResponseDto>> findGoalDetailByUserId(@PathVariable("userId") Long userId) {
+    public ApiResult<List<GoalDetailResponseDto>> findGoalDetailByUserId(
+            @PathVariable("userId") Long userId) {
+
         return success(goalDetailService.findGoalDetailByUserId(userId));
     }
 
@@ -82,6 +88,7 @@ public class GoalController {
     public ApiResult<SaveGoalDetailResponseDto> saveGoalDetail(
             @PathVariable("userId") Long userId,
             @Valid @RequestBody SaveGoalDetailRequestDto requestDto) {
+
         return success(goalDetailService.saveGoalDetail(userId, requestDto));
     }
 
@@ -96,6 +103,7 @@ public class GoalController {
     public ApiResult<String> deleteGoalDetail(
             @PathVariable("userId") Long userId,
             @PathVariable("goalDetailId") Long goalDetailId) {
+
         goalDetailService.deleteGoalDetail(goalDetailId);
         return success("success delete goalDetailId : " + goalDetailId);
     }
@@ -103,9 +111,9 @@ public class GoalController {
     /**
      * 세부 목표 변경
      *
-     * @param userId 사용자 아이디
+     * @param userId       사용자 아이디
      * @param goalDetailId 세부 목표 아이디
-     * @param requestDto 목표 DTO
+     * @param requestDto   목표 DTO
      * @return String
      */
     @PutMapping("/goals/{userId}/details/{goalDetailId}")
@@ -113,6 +121,7 @@ public class GoalController {
             @PathVariable("userId") Long userId,
             @PathVariable("goalDetailId") Long goalDetailId,
             @Valid @RequestBody SaveGoalDetailRequestDto requestDto) {
+
         goalDetailService.updateGoalDetail(goalDetailId, requestDto);
         return success("success update goalDetailId : " + goalDetailId);
     }
@@ -120,7 +129,7 @@ public class GoalController {
     /**
      * 실천 가능 시간 저장
      *
-     * @param userId 사용자 아이디
+     * @param userId     사용자 아이디
      * @param requestDto 목표 DTO
      * @return String
      */
@@ -128,6 +137,7 @@ public class GoalController {
     public ApiResult<String> saveGoalAvailableTime(
             @PathVariable("userId") Long userId,
             @Valid @RequestBody SaveGoalAvailableTimeRequestDto requestDto) {
+
         goalService.saveGoalAvailableTime(userId, requestDto);
         return success("success save");
     }
@@ -136,7 +146,7 @@ public class GoalController {
      * 오늘의 라플 리스트 조회
      *
      * @param userId 사용자 아이디
-     * @param date 조회 날짜
+     * @param date   조회 날짜
      * @return String
      */
     @GetMapping("/goals/{userId}/today")
@@ -150,9 +160,9 @@ public class GoalController {
     /**
      * 오늘의 라플 체크
      *
-     * @param userId 사용자 아이디
+     * @param userId       사용자 아이디
      * @param goalDetailId 세부 목표 아이디
-     * @param date 조회 날짜
+     * @param date         조회 날짜
      * @return String
      */
     @PostMapping("/goals/{userId}/today/{goalDetailId}")
@@ -163,6 +173,19 @@ public class GoalController {
 
         goalDetailService.checkTodayGoalCompleted(userId, goalDetailId, date);
         return success("success save");
+    }
+
+    /**
+     * 라플 리스트 카테고리 조회
+     *
+     * @param userId 사용자 아이디
+     * @return List
+     */
+    @GetMapping("/goals/{userId}/categories")
+    public ApiResult<List<GoalCategoryResponseDto>> findGoalCategoriesByUserId(
+            @PathVariable Long userId) {
+
+        return success(goalService.findGoalCategoriesByUserId(userId));
     }
 
 }
