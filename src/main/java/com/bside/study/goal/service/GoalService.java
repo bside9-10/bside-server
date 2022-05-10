@@ -31,10 +31,6 @@ public class GoalService {
     private final GoalCategoryRepository goalCategoryRepository;
     private final GoalAvailableTimeRepository goalAvailableTimeRepository;
 
-    public List<GoalResponseDto> findGoalsByUserId(Long userId) {
-        return goalRepository.findGoalByUserId(userId);
-    }
-
     public SaveGoalCategoryResponseDto saveGoalCategory(Long userId, SaveGoalCategoryRequestDto requestDto) {
         User user = userDetailsService.loadUserById(userId);
 
@@ -72,5 +68,17 @@ public class GoalService {
         });
 
         return result;
+    }
+
+    public List<LafflesResponseDto> findGoalsByUserIdAndCategoryId(Long userId, Long categoryId) {
+        User user = userDetailsService.loadUserById(userId);
+
+        return goalRepository.findGoalsByUserIdAndCategoryId(user, categoryId);
+    }
+
+    public List<GoalCategoryResponseDto> findGoalCategoriesByUserId(Long userId) {
+        User user = userDetailsService.loadUserById(userId);
+
+        return goalRepository.findGoalByUserId(user.getId());
     }
 }

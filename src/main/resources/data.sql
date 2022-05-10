@@ -17,6 +17,7 @@ insert into goal_available_time (goal_available_time_id, created_date, modified_
 -- 목표 카테고리 설정
 insert into goal (goal_id, created_date, modified_date, goal_category_name, goal_category_id, user_id) values (1, now(), now(), '운동', 1, 2);
 insert into goal (goal_id, created_date, modified_date, goal_category_name, goal_category_id, user_id) values (2, now(), now(), '이직준비', 4, 2);
+insert into goal (goal_id, created_date, modified_date, goal_category_name, goal_category_id, user_id) values (3, now(), now(), '비사이드 프로젝트 진행', 5, 2);
 
 -- 세부 목표 설정
 insert into goal_detail (goal_detail_id, created_date, modified_date, end_date, end_time, notification, start_date, start_time, title, goal_id, user_id, goal_date_status)
