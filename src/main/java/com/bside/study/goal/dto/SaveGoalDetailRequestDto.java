@@ -4,7 +4,9 @@ import com.bside.study.goal.entity.GoalDateStatus;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 public class SaveGoalDetailRequestDto {
@@ -30,6 +32,7 @@ public class SaveGoalDetailRequestDto {
     @NotNull(message = "알림여부를 설정하세요")
     private boolean notification;
 
-    @NotNull(message = "요일을 설정하세요")
     private GoalDateStatus goalDateStatus;
+
+    private List<DayOfWeek> dayOfWeeks;
 }

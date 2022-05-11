@@ -56,6 +56,7 @@ public class GoalRepositoryImpl implements GoalRepositoryCustom {
                 )
                 .from(goalDetail)
                 .join(goalDetail.goal, goal).on(goal.user.id.eq(user.getId()).and(goal.goalCategory.id.eq(categoryId)))
+                .orderBy(goalDetail.createdDate.desc())
                 .fetch();
     }
 
