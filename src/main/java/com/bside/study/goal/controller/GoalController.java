@@ -143,6 +143,19 @@ public class GoalController {
     }
 
     /**
+     * 실천 가능 시간 조회
+     *
+     * @param userId     사용자 아이디
+     * @return String
+     */
+    @GetMapping("/goals/{userId}/available-time")
+    public ApiResult<GoalAvailableTimeDto> findGoalAvailableTimeByUserId(
+            @PathVariable("userId") Long userId) {
+
+        return success(goalService.findGoalAvailableTimeByUserId(userId));
+    }
+
+    /**
      * 오늘의 라플 리스트 조회
      *
      * @param userId 사용자 아이디

@@ -81,4 +81,10 @@ public class GoalService {
 
         return goalRepository.findGoalByUserId(user.getId());
     }
+
+    public GoalAvailableTimeDto findGoalAvailableTimeByUserId(Long userId) {
+        GoalAvailableTime goalAvailableTime = goalAvailableTimeRepository.findByUserId(userId);
+
+        return new GoalAvailableTimeDto(goalAvailableTime);
+    }
 }

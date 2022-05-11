@@ -48,27 +48,41 @@ public class GoalDetailService {
         GoalDetail saveGoalDetail = saveGoalDetail(requestDto, user, goal);
 
         GoalDateStatus goalDateStatus = requestDto.getGoalDateStatus();
-
         LocalDate startDate = requestDto.getStartDate();
         LocalDate endDate = requestDto.getEndDate().plusDays(1);
         Stream<LocalDate> localDateStream = startDate.datesUntil(endDate);
 
-        if (GoalDateStatus.DAY == goalDateStatus) {
+        if (goalDateStatus == null) {
+            // 요일을 직접 선택한 경우
+            List<DayOfWeek> dayOfWeeks = requestDto.getDayOfWeeks();
+
             localDateStream.forEach(localDate -> {
-                if (DayOfWeek.SATURDAY != localDate.getDayOfWeek() && DayOfWeek.SUNDAY != localDate.getDayOfWeek()) {
-                    saveGoalCalendar(saveGoalDetail, localDate);
+                for (DayOfWeek dayOfWeek : dayOfWeeks) {
+                    if (dayOfWeek == localDate.getDayOfWeek()) {
+                        saveGoalCalendar(saveGoalDetail, localDate);
+                    }
                 }
             });
 
-        } else if (GoalDateStatus.DAILY == goalDateStatus) {
-            localDateStream.forEach(localDate -> saveGoalCalendar(saveGoalDetail, localDate));
+        } else {
+            // 매일, 평일, 주말을 선택한 경우
+            if (GoalDateStatus.DAY == goalDateStatus) {
+                localDateStream.forEach(localDate -> {
+                    if (DayOfWeek.SATURDAY != localDate.getDayOfWeek() && DayOfWeek.SUNDAY != localDate.getDayOfWeek()) {
+                        saveGoalCalendar(saveGoalDetail, localDate);
+                    }
+                });
 
-        } else if (GoalDateStatus.WEEKEND == goalDateStatus) {
-            localDateStream.forEach(localDate -> {
-                if (DayOfWeek.SATURDAY == localDate.getDayOfWeek() || DayOfWeek.SUNDAY == localDate.getDayOfWeek()) {
-                    saveGoalCalendar(saveGoalDetail, localDate);
-                }
-            });
+            } else if (GoalDateStatus.DAILY == goalDateStatus) {
+                localDateStream.forEach(localDate -> saveGoalCalendar(saveGoalDetail, localDate));
+
+            } else if (GoalDateStatus.WEEKEND == goalDateStatus) {
+                localDateStream.forEach(localDate -> {
+                    if (DayOfWeek.SATURDAY == localDate.getDayOfWeek() || DayOfWeek.SUNDAY == localDate.getDayOfWeek()) {
+                        saveGoalCalendar(saveGoalDetail, localDate);
+                    }
+                });
+            }
         }
 
         return modelMapper.map(saveGoalDetail, SaveGoalDetailResponseDto.class);
