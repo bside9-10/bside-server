@@ -10,8 +10,13 @@ public class UserInfoResponse {
     private String name;
     private String email;
     private int total;
+    private int goalCount;
 
     public void calcTotalGoalAvailableTime(int daily, int weekly) {
         total = (daily * 5) + (weekly * 2);
+    }
+
+    public void setGoalCount(Long goalCount) {
+        this.goalCount = Integer.parseInt(String.valueOf(goalCount));
     }
 }
