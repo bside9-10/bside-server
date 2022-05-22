@@ -4,6 +4,7 @@ import com.bside.study.common.api.ApiResult;
 import com.bside.study.errors.ResourceNotFoundException;
 import com.bside.study.goal.entity.GoalAvailableTime;
 import com.bside.study.goal.repository.GoalAvailableTimeRepository;
+import com.bside.study.goal.repository.GoalCalendarRepository;
 import com.bside.study.goal.repository.GoalDetailRepository;
 import com.bside.study.security.CurrentUser;
 import com.bside.study.security.UserPrincipal;
@@ -30,6 +31,7 @@ public class UserController {
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
     private final GoalDetailRepository goalDetailRepository;
+    private final GoalCalendarRepository goalCalendarRepository;
     private final GoalAvailableTimeRepository goalAvailableTimeRepository;
 
     @GetMapping("/users/{userId}/me")
@@ -49,7 +51,9 @@ public class UserController {
         UserInfoResponse userInfoResponse = modelMapper.map(user, UserInfoResponse.class);
 
         userInfoResponse.calcTotalGoalAvailableTime(goalAvailableTime.getDaily(), goalAvailableTime.getWeekly());
-        userInfoResponse.setGoalCount(goalDetailRepository.countByUserId(user.getId()));
+        userInfoResponse.setGoalCount(goalDetailRepository.countGoalDetailByUserId(user.getId()));
+        userInfoResponse.calcJoinPeriod(user.getCreatedDate());
+        userInfoResponse.successGoalDetailCount(goalCalendarRepository.countGoalCalendarByUserIdAndCompleted(userId));
 
         return success(userInfoResponse);
     }

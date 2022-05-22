@@ -30,4 +30,13 @@ public class GoalCalendarRepositoryImpl implements GoalCalendarRepositoryCustom 
                 .fetchOne();
     }
 
+    @Override
+    public Long countGoalCalendarByUserIdAndCompleted(Long userId) {
+        return queryFactory
+                .select(goalCalendar.count())
+                .from(goalCalendar)
+                .where(goalCalendar.goalDetail.user.id.eq(userId).and(goalCalendar.completed.eq(true)))
+                .fetchOne();
+    }
+
 }
