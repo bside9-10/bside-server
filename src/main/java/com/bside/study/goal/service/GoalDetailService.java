@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -95,8 +96,8 @@ public class GoalDetailService {
                 .title(requestDto.getTitle())                   // 세부목표
                 .startDate(requestDto.getStartDate())           // 시작날짜
                 .endDate(requestDto.getEndDate())               // 종료날짜
-                .startTime(requestDto.getStartTime())           // 시작시간
-                .endTime(requestDto.getEndTime())               // 종료시간
+                .startTime(LocalTime.of(Integer.parseInt(requestDto.getStartTime().substring(0, 2)), Integer.parseInt(requestDto.getStartTime().substring(2, 4))))           // 시작시간
+                .endTime(LocalTime.of(Integer.parseInt(requestDto.getEndTime().substring(0, 2)), Integer.parseInt(requestDto.getEndTime().substring(2, 4))))               // 종료시간
                 .notification(requestDto.isNotification())      // 알림여부
                 .goalDateStatus(requestDto.getGoalDateStatus()) // 매일, 주말, 평일여부
                 .build();

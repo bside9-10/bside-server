@@ -32,9 +32,9 @@ public class GoalDetail extends LocalDateTimeEntity {
 
     private LocalDate endDate;
 
-    private String startTime;
+    private LocalTime startTime;
 
-    private String endTime;
+    private LocalTime endTime;
 
     private boolean notification;
 
@@ -51,8 +51,8 @@ public class GoalDetail extends LocalDateTimeEntity {
     public void updateGoalDetail(SaveGoalDetailRequestDto requestDto) {
         this.startDate = requestDto.getStartDate();
         this.endDate = requestDto.getEndDate();
-        this.startTime = requestDto.getStartTime();
-        this.endTime = requestDto.getEndTime();
+        this.startTime = LocalTime.of(Integer.parseInt(requestDto.getStartTime().substring(0, 2)), Integer.parseInt(requestDto.getStartTime().substring(2, 4)));
+        this.endTime = LocalTime.of(Integer.parseInt(requestDto.getEndTime().substring(0, 2)), Integer.parseInt(requestDto.getEndTime().substring(2, 4)));
         this.notification = requestDto.isNotification();
         this.goalDateStatus = requestDto.getGoalDateStatus();
     }

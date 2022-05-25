@@ -6,6 +6,7 @@ import com.querydsl.core.annotations.QueryProjection;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -15,12 +16,12 @@ public class GoalDetailResponseDto {
     private String title;
     private LocalDate startDate;
     private LocalDate endDate;
-    private String startTime;
-    private String endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private boolean notification;
 
     @QueryProjection
-    public GoalDetailResponseDto(Long goalDetailId, String goalCategoryName, String title, LocalDate startDate, LocalDate endDate, String startTime, String endTime, boolean notification) {
+    public GoalDetailResponseDto(Long goalDetailId, String goalCategoryName, String title, LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime, boolean notification) {
         this.goalDetailId = goalDetailId;
         this.goalCategoryName = goalCategoryName;
         this.title = title;

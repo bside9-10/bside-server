@@ -21,7 +21,7 @@ insert into goal (goal_id, created_date, modified_date, goal_category_name, goal
 
 -- 세부 목표 설정
 insert into goal_detail (goal_detail_id, created_date, modified_date, end_date, end_time, notification, start_date, start_time, title, goal_id, user_id, goal_date_status)
-values (1, now(), now(), '2022-04-30', '1800', false, '2022-04-15', '0900', '스쿼트 매일 100개!!', 1, 2, 'DAY');
+values (1, now(), now(), '2022-04-30', '180000', false, '2022-04-15', '090000', '스쿼트 매일 100개!!', 1, 2, 'DAY');
 
 -- 세부 목표 달력
 insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-15', 1);
@@ -38,7 +38,7 @@ insert into goal_calendar (created_date, modified_date, completed, goal_date, go
 
 -- 세부 목표 설정
 insert into goal_detail (goal_detail_id, created_date, modified_date, end_date, end_time, notification, start_date, start_time, title, goal_id, user_id, goal_date_status)
-values (2, now(), now(), '2022-04-30', '1830', false, '2022-04-15', '0930', '런지 주말 50개!!', 1, 2, 'WEEKEND');
+values (2, now(), now(), '2022-04-30', '183000', false, '2022-04-15', '093000', '런지 주말 50개!!', 1, 2, 'WEEKEND');
 
 -- 세부 목표 달력
 insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-16', 2);
@@ -49,7 +49,7 @@ insert into goal_calendar (created_date, modified_date, completed, goal_date, go
 
 -- 세부 목표 설정
 insert into goal_detail (goal_detail_id, created_date, modified_date, end_date, end_time, notification, start_date, start_time, title, goal_id, user_id, goal_date_status)
-values (3, now(), now(), '2022-04-30', '2200', true, '2022-04-15', '1900', '매일 이직 공부 3시간씩', 2, 2, 'DAILY');
+values (3, now(), now(), '2022-04-30', '220000', true, '2022-04-15', '190000', '매일 이직 공부 3시간씩', 2, 2, 'DAILY');
 
 -- 세부 목표 달력
 insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-15', 3);
@@ -71,7 +71,7 @@ insert into goal_calendar (created_date, modified_date, completed, goal_date, go
 
 -- 세부 목표 설정
 insert into goal_detail (goal_detail_id, created_date, modified_date, end_date, end_time, notification, start_date, start_time, title, goal_id, user_id, goal_date_status)
-values (4, now(), now(), '2022-04-30', '1800', false, '2022-04-15', '0900', '플랭크 매일 10분!!', 1, 2, 'DAY');
+values (4, now(), now(), '2022-04-30', '180000', false, '2022-04-15', '090000', '플랭크 매일 10분!!', 1, 2, 'DAY');
 
 -- 세부 목표 달력
 insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-15', 4);

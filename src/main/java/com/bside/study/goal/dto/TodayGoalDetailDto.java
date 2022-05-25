@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Getter;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TodayGoalDetailDto {
@@ -15,10 +18,10 @@ public class TodayGoalDetailDto {
     private String goalDateStatusDesc;
 
     @QueryProjection
-    public TodayGoalDetailDto(Long goalDetailId, String title, String startTime, GoalDateStatus goalDateStatus) {
+    public TodayGoalDetailDto(Long goalDetailId, String title, LocalTime startTime, GoalDateStatus goalDateStatus) {
         this.goalDetailId = goalDetailId;
         this.title = title;
-        this.startTime = startTime;
+        this.startTime = startTime.format(DateTimeFormatter.ofPattern("a hh:mm"));
         this.goalDateStatusDesc = goalDateStatus.getDesc();
     }
 }
