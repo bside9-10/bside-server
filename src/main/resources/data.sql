@@ -21,67 +21,75 @@ insert into goal (goal_id, created_date, modified_date, goal_category_name, goal
 
 -- 세부 목표 설정
 insert into goal_detail (goal_detail_id, created_date, modified_date, end_date, end_time, notification, start_date, start_time, title, goal_id, user_id, goal_date_status)
-values (1, now(), now(), '2022-04-30', '180000', false, '2022-04-15', '090000', '스쿼트 매일 100개!!', 1, 2, 'DAY');
+values (1, now(), now(), '2022-06-30', '180000', false, '2022-06-01', '090000', '스쿼트 매일 100개!!', 1, 2, 'DAY');
 
 -- 세부 목표 달력
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-15', 1);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-18', 1);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-19', 1);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-20', 1);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-21', 1);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-22', 1);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-25', 1);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-26', 1);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-27', 1);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-28', 1);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-29', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-01', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-02', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-03', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-04', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-15', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-15', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-18', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-19', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-20', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-21', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-22', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-25', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-26', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-27', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-28', 1);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-29', 1);
 
 -- 세부 목표 설정
 insert into goal_detail (goal_detail_id, created_date, modified_date, end_date, end_time, notification, start_date, start_time, title, goal_id, user_id, goal_date_status)
-values (2, now(), now(), '2022-04-30', '183000', false, '2022-04-15', '093000', '런지 주말 50개!!', 1, 2, 'WEEKEND');
+values (2, now(), now(), '2022-06-30', '183000', false, '2022-06-01', '093000', '런지 주말 50개!!', 1, 2, 'WEEKEND');
 
 -- 세부 목표 달력
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-16', 2);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-17', 2);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-23', 2);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-24', 2);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-30', 2);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-01', 2);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-16', 2);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-17', 2);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-23', 2);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-24', 2);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-30', 2);
 
 -- 세부 목표 설정
 insert into goal_detail (goal_detail_id, created_date, modified_date, end_date, end_time, notification, start_date, start_time, title, goal_id, user_id, goal_date_status)
-values (3, now(), now(), '2022-04-30', '220000', true, '2022-04-15', '190000', '매일 이직 공부 3시간씩', 2, 2, 'DAILY');
+values (3, now(), now(), '2022-06-30', '220000', true, '2022-06-01', '190000', '매일 이직 공부 3시간씩', 2, 2, 'DAILY');
 
 -- 세부 목표 달력
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-15', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-16', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-17', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-18', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-19', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-20', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-21', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-22', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-23', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-24', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-25', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-26', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-30', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-27', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-28', 3);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-29', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-01', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-02', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-15', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-16', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-17', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-18', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-19', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-20', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-21', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-22', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-23', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-24', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-25', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-26', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-30', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-27', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-28', 3);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-29', 3);
 
 -- 세부 목표 설정
 insert into goal_detail (goal_detail_id, created_date, modified_date, end_date, end_time, notification, start_date, start_time, title, goal_id, user_id, goal_date_status)
-values (4, now(), now(), '2022-04-30', '180000', false, '2022-04-15', '090000', '플랭크 매일 10분!!', 1, 2, 'DAY');
+values (4, now(), now(), '2022-06-30', '180000', false, '2022-06-15', '090000', '플랭크 매일 10분!!', 1, 2, 'DAY');
 
 -- 세부 목표 달력
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-15', 4);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-18', 4);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-19', 4);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-20', 4);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-21', 4);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-22', 4);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-25', 4);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-26', 4);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-27', 4);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-28', 4);
-insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-04-29', 4);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-15', 4);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-18', 4);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-19', 4);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-20', 4);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-21', 4);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-22', 4);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-25', 4);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-26', 4);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), true, '2022-06-27', 4);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-28', 4);
+insert into goal_calendar (created_date, modified_date, completed, goal_date, goal_detail_id) values (now(), now(), false, '2022-06-29', 4);

@@ -201,4 +201,16 @@ public class GoalController {
         return success(goalService.findGoalCategoriesByUserId(userId));
     }
 
+    /**
+     * 오늘의 라플 스탬프 목록 조회
+     *
+     * @param userId 사용자 아이디
+     */
+    @GetMapping("/goals/{userId}/today/stamp")
+    public ApiResult<List<StampDto>> todayGoalsCalendarStamp(
+            @PathVariable Long userId,
+            @RequestParam(name = "month") String month) {
+
+        return success(goalService.findTodayGoalsCalendarStampByUserId(userId, month));
+    }
 }

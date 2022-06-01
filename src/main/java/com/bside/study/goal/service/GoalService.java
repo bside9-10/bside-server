@@ -87,4 +87,8 @@ public class GoalService {
 
         return new GoalAvailableTimeDto(goalAvailableTime);
     }
+
+    public List<StampDto> findTodayGoalsCalendarStampByUserId(Long userId, String month) {
+        return goalRepository.findTodayGoalsCalendarStampByUserId(userId, month);
+    }
 }
