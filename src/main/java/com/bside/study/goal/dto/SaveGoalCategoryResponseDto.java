@@ -11,7 +11,7 @@ public class SaveGoalCategoryResponseDto {
     private String goalCategoryName;
 
     public SaveGoalCategoryResponseDto(Goal entity) {
-        this.goalCategoryId = entity.getGoalCategory().getId();
+        this.goalCategoryId = entity.getUserCategory().getId();
         this.goalCategoryName = entity.getGoalCategoryName();
     }
 }

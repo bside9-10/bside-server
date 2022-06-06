@@ -1,6 +1,6 @@
 -- 사용자 추가
 insert into user (user_id, email, name, password, provider, provider_id, `role`, created_date, modified_date) values (1, 'lifeplan@gmail.com', '관리자', '$2a$10$RJFLJ9r15drjz9xxxSTSiurBbnVOFMK2zk2Kzh7XnNXuThCIhySLC', 'local', '', 'ADMIN', now(), now());
-insert into user (user_id, email, name, password, provider, provider_id, `role`, created_date, modified_date) values (2, 'bside1@gmail.com', '테스트1', '$2a$10$RJFLJ9r15drjz9xxxSTSiurBbnVOFMK2zk2Kzh7XnNXuThCIhySLC', 'local', '', 'USER', now(), now());
+insert into user (user_id, email, name, password, provider, provider_id, `role`, created_date, modified_date) values (2, 'bside1@gmail.com', '홍길동', '$2a$10$RJFLJ9r15drjz9xxxSTSiurBbnVOFMK2zk2Kzh7XnNXuThCIhySLC', 'local', '', 'USER', now(), now());
 insert into user (user_id, email, name, password, provider, provider_id, `role`, created_date, modified_date) values (3, 'bside2@gmail.com', '테스트2', '$2a$10$RJFLJ9r15drjz9xxxSTSiurBbnVOFMK2zk2Kzh7XnNXuThCIhySLC', 'local', '', 'USER', now(), now());
 
 -- 목표 카테고리
@@ -14,10 +14,15 @@ insert into goal_category (goal_category_id, created_date, modified_date, catego
 -- 실천 가능 시간
 insert into goal_available_time (goal_available_time_id, created_date, modified_date, daily, weekly, user_id) values (1, now(), now(), 3, 5, 2);
 
+-- 사용자 저장 카테고리
+insert into user_category (user_category_id, created_date, modified_date, category, goal_category_id, user_id) values (1, now(), now(), '운동', 1, 2);
+insert into user_category (user_category_id, created_date, modified_date, category, goal_category_id, user_id) values (2, now(), now(), '이직준비', 4, 2);
+insert into user_category (user_category_id, created_date, modified_date, category, goal_category_id, user_id) values (3, now(), now(), '자기계발', 5, 2);
+
 -- 목표 카테고리 설정
-insert into goal (goal_id, created_date, modified_date, goal_category_name, goal_category_id, user_id) values (1, now(), now(), '운동', 1, 2);
-insert into goal (goal_id, created_date, modified_date, goal_category_name, goal_category_id, user_id) values (2, now(), now(), '이직준비', 4, 2);
-insert into goal (goal_id, created_date, modified_date, goal_category_name, goal_category_id, user_id) values (3, now(), now(), '비사이드 프로젝트 진행', 5, 2);
+insert into goal (goal_id, created_date, modified_date, goal_category_name, user_category_id, user_id) values (1, now(), now(), '운동', 1, 2);
+insert into goal (goal_id, created_date, modified_date, goal_category_name, user_category_id, user_id) values (2, now(), now(), '이직준비', 2, 2);
+insert into goal (goal_id, created_date, modified_date, goal_category_name, user_category_id, user_id) values (3, now(), now(), '비사이드 프로젝트 진행', 3, 2);
 
 -- 세부 목표 설정
 insert into goal_detail (goal_detail_id, created_date, modified_date, end_date, end_time, notification, start_date, start_time, title, goal_id, user_id, goal_date_status)
