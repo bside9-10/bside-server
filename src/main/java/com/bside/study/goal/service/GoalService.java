@@ -54,20 +54,26 @@ public class GoalService {
         goalAvailableTimeRepository.save(goalAvailableTime);
     }
 
-    public List<TodayGoalResponseDto> findTodayGoalsByUserId(Long userId, String date) {
+    public TodayGoalResultMap findTodayGoalsByUserId(Long userId, String date) {
         User user = userDetailsService.loadUserById(userId);
         List<Goal> findGoals = goalRepository.findByUserId(user.getId());
 
         List<TodayGoalResponseDto> result = new ArrayList<>();
+        boolean flag = false;
 
-        findGoals.forEach(goal -> {
+        for (Goal goal : findGoals) {
             // 목표 기간 중인 경우 조회, 매일 평일 주말에 해당하는 날짜만 조회
             List<TodayGoalDetailDto> goalDetails = goalDetailRepository.findTodayGoalDetailByGoalId(goal, date);
 
-            result.add(new TodayGoalResponseDto(goal, goalDetails));
-        });
+            if (!goalDetails.isEmpty()) {
+                flag = true;
+            }
 
-        return result;
+            result.add(new TodayGoalResponseDto(goal, goalDetails));
+        }
+
+
+        return new TodayGoalResultMap(flag, result);
     }
 
     public List<LafflesResponseDto> findGoalsByUserIdAndCategoryId(Long userId, Long categoryId) {

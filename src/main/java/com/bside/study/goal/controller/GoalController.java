@@ -163,7 +163,7 @@ public class GoalController {
      * @return String
      */
     @GetMapping("/goals/{userId}/today")
-    public ApiResult<List<TodayGoalResponseDto>> findTodayGoalsByUserId(
+    public ApiResult<TodayGoalResultMap> findTodayGoalsByUserId(
             @PathVariable("userId") Long userId,
             @RequestParam(name = "date") String date) {
 
