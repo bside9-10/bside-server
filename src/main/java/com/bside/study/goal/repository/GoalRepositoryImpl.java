@@ -33,7 +33,7 @@ public class GoalRepositoryImpl implements GoalRepositoryCustom {
         return queryFactory
                 .select(
                         new QGoalCategoryResponseDto(
-                                goal.goalCategory.id,
+                                goal.userCategory.id,
                                 goal.goalCategoryName
                         )
                 )
@@ -60,7 +60,7 @@ public class GoalRepositoryImpl implements GoalRepositoryCustom {
                         )
                 )
                 .from(goalDetail)
-                .join(goalDetail.goal, goal).on(goal.user.id.eq(user.getId()).and(goal.goalCategory.id.eq(categoryId)))
+                .join(goalDetail.goal, goal).on(goal.user.id.eq(user.getId()).and(goal.userCategory.id.eq(categoryId)))
                 .orderBy(goalDetail.createdDate.desc())
                 .fetch();
     }
