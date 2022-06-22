@@ -55,6 +55,9 @@ public class UserController {
         userInfoResponse.calcJoinPeriod(user.getCreatedDate());
         userInfoResponse.successGoalDetailCount(goalCalendarRepository.countGoalCalendarByUserIdAndCompleted(userId));
 
+        // 카테고리별 달성율
+
+
         return success(userInfoResponse);
     }
 }
